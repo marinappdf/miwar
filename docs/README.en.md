@@ -10,6 +10,11 @@ In a distant corner of the galaxy, where the stars shine brightly, two legendary
 
 ## How to Play
 
+- **Start the Game**
+
+  - Use the arrow keys to select the Play option, "Jogar".
+  - The selected option will be blue.
+
 - **Player 1 (Red Cat)**:
 
   - Moves using the **W, A, S, D** keys.

@@ -10,6 +10,11 @@ Em um canto distante da galáxia, onde as estrelas brilham intensamente, dois ga
 
 ## Como Jogar
 
+- **Inicie o Jogo**
+
+  - Com as setas, selecione a opção "Jogar".
+  - A opção selecionada será azul.
+
 - **Jogador 1 (Gato Vermelho)**:
 
   - Movimenta-se utilizando as teclas **W, A, S, D**.

@@ -1,42 +1,37 @@
 import pygame
 import sys
+import os
 import subprocess
 
-# Inicializa o Pygame
 pygame.init()
 
-# Definir dimensões da janela
 LARGURA, ALTURA = 800, 600
 JAN = pygame.display.set_mode((LARGURA, ALTURA))
 pygame.display.set_caption("Menu Principal")
 
-# Definir cores
 BRANCO = (255, 255, 255)
 PRETO = (0, 0, 0)
 VERMELHO = (255, 0, 0)
+AZUL = (0 , 0, 255)
 
-# Definir fontes
 FONTE_MENU = pygame.font.SysFont('comicsans', 40)
+FUNDO = pygame.transform.scale(pygame.image.load(os.path.join('Recursos', 'fundo.png')), (LARGURA, ALTURA))
 
-# Função para desenhar o menu
 def desenhar_menu(selecao):
-    JAN.fill(PRETO)
+    JAN.blit(FUNDO, (0,0))
     
-    # Opções do menu
     opcoes = ['Jogar', 'Sair']
     
     for i, opcao in enumerate(opcoes):
         if i == selecao:
-            texto = FONTE_MENU.render(opcao, True, VERMELHO)
+            texto = FONTE_MENU.render(opcao, True, AZUL)
         else:
-            texto = FONTE_MENU.render(opcao, True, BRANCO)
+            texto = FONTE_MENU.render(opcao, True, VERMELHO)
         
-        # Centraliza o texto
         JAN.blit(texto, (LARGURA//2 - texto.get_width()//2, ALTURA//2 - 100 + i*60))
-    
+        
     pygame.display.update()
 
-# Função principal
 def menu():
     selecao = 0
     rodando = True
@@ -49,23 +44,21 @@ def menu():
                 pygame.quit()
                 sys.exit()
             
-            # Navega no menu com as setas
+      
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_DOWN:
                     selecao += 1
-                    if selecao > 2:  # Limite inferior
+                    if selecao > 1:  
                         selecao = 0
                 elif event.key == pygame.K_UP:
                     selecao -= 1
-                    if selecao < 0:  # Limite superior
-                        selecao = 2
+                    if selecao < 0:  
+                        selecao = 1
                 
-                # Seleciona opção com Enter
                 if event.key == pygame.K_RETURN:
-                    if selecao == 0:  # Jogar
+                    if selecao == 0: 
                         print("Iniciando o jogo...")
                         subprocess.run(["python3", "batalha.py"])
-                        #rodando = False  # Aqui você pode iniciar o loop do jogo principal
                     elif selecao == 1:
                         pygame.quit()
                         sys.exit()
